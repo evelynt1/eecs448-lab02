@@ -30,10 +30,11 @@ template <typename T>
 int LinkedList<T>::size() const
 {
 	int length;
-	while(head != NULL)
+	while(isEmpty() == false)
 	{
+		Node<T>* temp = m_front;
 		length++;
-		head = head->next;
+		temp = temp->getNext();
 	}
 	return(length);
 }
@@ -41,28 +42,28 @@ int LinkedList<T>::size() const
 template <typename T>
 bool LinkedList<T>::search(T value) const
 {
+	int index = 0;
 	Node<T>* temp = m_front;
 	bool isFound = false;
-	temp = head;
-	current = head;
-
-	while (current != NULL && current->number != value)
-        {
-       	 	temp = current;
-        	current = current->next;
-        }
-    	if (current != NULL)
-    	{	
-        	searchedValue = current;
-        	current = current->next;
-        	std::cout << "-" << searchedValue  << "Found";
+	while(temp != NULL)
+	{
+		for(int i = 1; i <= m_size; i++)
+		{
+    			if (temp->getValue() == value)
+    			{	
+        			std::cout << "-" << value  << "Found";
+				isFound = true;
+				break;
+			}
+		}		 
+		index++;
+		temp = temp->getNext();
     	}
-    	else
+    	if(!isFound)
     	{
         	std::cout << "Not found.";
     	}
-	
-	return(isFound);
+
 }
 
 template <typename T>
@@ -116,34 +117,34 @@ void LinkedList<T>::addFront(T value)
 template <typename T>
 bool LinkedList<T>::removeBack()
 {
-	Node<T>* lastNode = nullptr;
-	Node<T>* secondintoLast = nullptr;
+	Node<T>* temp = nullptr;
+	Node<T>* temp2 = nullptr;
 	bool isRemoved = false;
 
-	if(m_length == 0)
+	if(m_size == 0)
 	{
 		return(false);
 	}
-	else if(m_length == 1)
+	else if(m_size == 1)
 	{
 		removeFront();
 		return(true);
 	}
 	else
 	{
-		Node<T>* lastNode  = m_front;
-		Node<T>* secondintoLast = m_front;
-		for(int i = 1; i <= (m_length-1); i++)
+		Node<T>* temp  = m_front;
+		Node<T>* temp2 = m_front;
+		for(int i = 1; i <= (m_size-1); i++)
 		{
 			temp = temp -> getNext();
 		}
-		for(int i = 1; i < m_length-1; i++)
+		for(int i = 1; i < m_size-1; i++)
 		{
 			temp2 = temp2->getNext();
 		}
 		delete temp;
 		temp2 -> setNext(nullptr);
-		m_length = m_length - 1;
+		m_size = m_size - 1;
 		return(true);
 	}
 

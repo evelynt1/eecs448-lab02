@@ -43,7 +43,25 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
+	temp = head;
+	current = head;
 
+	while (current != NULL && current->number != value)
+        {
+       	 	temp = current;
+        	current = current->next;
+        }
+    	if (current != NULL)
+    	{	
+        	searchedValue = current;
+        	current = current->next;
+        	std::cout << "-" << searchedValue  << "Found";
+    	}
+    	else
+    	{
+        	std::cout << "Not found.";
+    	}
+	
 	return(isFound);
 }
 

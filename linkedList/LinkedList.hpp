@@ -128,7 +128,8 @@ bool LinkedList<T>::removeBack()
 	}
 	else
 	{
-		Node<T>* temp  = m_front;
+		Node<T>* temp  = nullptr;
+		Node<T>* temp2 = nullptr;
 		while(temp->getNext()->getNext() != nullptr)
 		{
 			temp = temp->getNext();

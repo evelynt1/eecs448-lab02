@@ -33,7 +33,7 @@ int LinkedList<T>::size() const
 	int length;
         if(isEmpty() == true)
         {
-                return("Size is 0 - it is empty.");
+                return(m_size = 0);
         }
         while(isEmpty() == false)
         {

@@ -116,7 +116,6 @@ template <typename T>
 bool LinkedList<T>::removeBack()
 {
 	Node<T>* temp = nullptr;
-	Node<T>* temp2 = nullptr;
 	bool isRemoved = false;
 
 	if(isEmpty())
@@ -132,7 +131,7 @@ bool LinkedList<T>::removeBack()
 		Node<T>* temp  = m_front;
 		while(temp->getNext()->getNext() != nullptr)
 		{
-			temp = temp -> getNext();
+			temp = temp->getNext();
 		}
 		delete temp->getNext();
 		temp2 -> setNext(nullptr);

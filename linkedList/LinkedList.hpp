@@ -30,6 +30,18 @@ template <typename T>
 int LinkedList<T>::size() const
 {
 
+	int length;
+        if(isEmpty() == true)
+        {
+                return("Size is 0 - it is empty.");
+        }
+        while(isEmpty() == false)
+        {
+                Node<T>* temp = m_front;
+                length++;
+                temp = temp->getNext();
+        }
+        return(length);
 }
 
 template <typename T>

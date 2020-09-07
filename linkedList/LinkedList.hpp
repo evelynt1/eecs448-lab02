@@ -35,6 +35,10 @@ int LinkedList<T>::size() const
         {
                 return(0);
         }
+	if(m_size == 1)
+	{
+		return(m_size+1);
+	}
         while(isEmpty() == false)
         {
                 Node<T>* temp = m_front;
